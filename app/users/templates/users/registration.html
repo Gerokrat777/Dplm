@@ -1,4 +1,4 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 {% load static %}
 
 {% block modal_cart %}
@@ -6,93 +6,139 @@
 {% endblock %}
 
 {% block content %}
+<div class="row">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-9 bg-white p-4 mb-5 mx-2 rounded custom-shadow">
+                <h2 class="text-center mb-4">Регистрация</h2>
+                <form action="{% url 'user:registration' %}" method="post">
+                    {% csrf_token %}
                     <div class="row">
-                        <div class="container mt-5">
-                            <div class="row justify-content-center">
-                                <div class="col-md-9 bg-white p-4 mb-5 mx-2 rounded custom-shadow">
-                                    <h2 class="text-center mb-4">Регистрация</h2>
-                                    <form action="{% url 'user:registration' %}" method = 'post'>
-                                        {% csrf_token %}
-
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label for="id_first-name" class="form-label">Имя*</label>
-                                                <input type="text" class="form-control" id="id_first-name"
-                                                    value="{% if form.first_name.value %}
-                                                    {{form.first_name.value}}
-                                                    {%endif%}"
-                                                    name="fist_name"
-                                                    placeholder="Введите ваше имя" required>
-                                                    {% if form.first_name.errors %}
-                                                    <div class="alert alert-danger alert dismissible fade show">{{form.first_name.errors}}</div>
-                                                    {% endif %}
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="id_last_name" class="form-label">Фамилия*</label>
-                                                <input type="text" class="form-control" id="id_last_name"
-                                                     value="{% if form.last_name.value %}
-                                                    {{form.last_name.value}}
-                                                    {%endif%}"
-                                                    name="last_name"
-                                                    placeholder="Введите вашу фамилию" required>
-                                                    {% if form.last_name.errors %}
-                                                    <div class="alert alert-danger alert dismissible fade show">{{form.last_name.errors}}</div>
-                                                    {% endif %}
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="id_username" class="form-label">Имя пользователя*</label>
-                                                <input type="text" class="form-control" id="id_username"
-                                                    value="{% if form.id_username.value %}
-                                                    {{form.id_username.value}}
-                                                    {%endif%}"
-                                                    name="id_username"
-                                                    placeholder="Введите ваше имя пользователя" required>
-                                                     {% if form.username.errors %}
-                                                    <div class="alert alert-danger alert dismissible fade show">{{form.username.errors}}</div>
-                                                    {% endif %}
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="id_email" class="form-label">Email*</label>
-                                                <input type="email" class="form-control" id="id_email"
-                                                    value="{% if form.email.value %}
-                                                    {{form.email.value}}
-                                                    {%endif%}"
-                                                    name="email"
-                                                    placeholder="Введите ваш email" required>
-                                                     {% if form.email.errors %}
-                                                    <div class="alert alert-danger alert dismissible fade show">{{form.email.errors}}</div>
-                                                    {% endif %}
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="id_password1" class="form-label">Пароль*</label>
-                                                <input type="password" class="form-control" id="id_password1"
-                                                    value="{% if form.password1.value %}
-                                                    {{form.password1.value}}
-                                                    {%endif%}"
-                                                    name="password1"
-                                                    placeholder="Введите пароль" required>
-                                                     {% if form.password1.errors %}
-                                                    <div class="alert alert-danger alert dismissible fade show">{{form.password1.errors}}</div>
-                                                    {% endif %}
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="id_password2" class="form-label">Подтверждение пароля*</label>
-                                                <input type="password" class="form-control" id="id_password2"
-                                                    value="{% if form.password2.value %}
-                                                    {{form.password2.value}}
-                                                    {%endif%}"
-                                                    name="password2"
-                                                    placeholder="Подтвердите пароль" required>
-                                                     {% if form.password2.errors %}
-                                                    <div class="alert alert-danger alert dismissible fade show">{{form.password2.errors}}</div>
-                                                    {% endif %}
-                                            </div>
-                                        </div>
-                                        <button type="submit"
-                                            class="btn btn-dark btn-block">Зарегистрироваться</button>
-                                    </form>
-                                </div>
-                            </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_first_name" class="form-label">Имя*</label>
+                            <input type="text" class="form-control" id="id_first_name"
+                                   value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
+                                   name="first_name"
+                                   placeholder="Введите ваше имя" required>
+                            {% if form.first_name.errors %}
+                            <div class="alert alert-danger alert dismissible fade show">{{ form.first_name.errors }}</div>
+                            {% endif %}
+                        </div>
+<!--                        <div class="col-md-6 mb-3">-->
+<!--                            <label for="id_last_name" class="form-label">Фамилия*</label>-->
+<!--                            <input type="text" class="form-control" id="id_last_name"-->
+<!--                                   value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}"-->
+<!--                                   name="last_name"-->
+<!--                                   placeholder="Введите вашу фамилию" required>-->
+<!--                            {% if form.last_name.errors %}-->
+<!--                            <div class="alert alert-danger alert dismissible fade show">{{ form.last_name.errors }}</div>-->
+<!--                            {% endif %}-->
+<!--                        </div>-->
+                        <div class="col-md-6 mb-3">
+                            <label for="id_username" class="form-label">Имя пользователя*</label>
+                            <input type="text" class="form-control" id="id_username"
+                                   value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
+                                   name="username"
+                                   placeholder="Введите ваше имя пользователя" required>
+                            {% if form.username.errors %}
+                            <div class="alert alert-danger alert dismissible fade show">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_email" class="form-label">Email*</label>
+                            <input type="email" class="form-control" id="id_email"
+                                   value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
+                                   name="email"
+                                   placeholder="Введите ваш email" required>
+                            {% if form.email.errors %}
+                            <div class="alert alert-danger alert dismissible fade show">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_password1" class="form-label">Пароль*</label>
+                            <input type="password" class="form-control" id="id_password1"
+                                   name="password1"
+                                   placeholder="Введите пароль" required>
+                            {% if form.password1.errors %}
+                            <div class="alert alert-danger alert dismissible fade show">{{ form.password1.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_password2" class="form-label">Подтверждение пароля*</label>
+                            <input type="password" class="form-control" id="id_password2"
+                                   name="password2"
+                                   placeholder="Подтвердите пароль" required>
+                            {% if form.password2.errors %}
+                            <div class="alert alert-danger alert dismissible fade show">{{ form.password2.errors }}</div>
+                            {% endif %}
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-dark btn-block">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
+```
+
+В этом шаблоне мы используем HTML-разметку для отображения полей формы, но убедимся, что все поля правильно настроены и обрабатываются. Мы также добавили отображение ошибок для каждого поля.
+
+Убедитесь, что ваша форма Django правильно настроена и все поля имеют правильные имена. Вот пример формы Django для регистрации:
+
+```python
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+class UserRegistrationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'username',
+            'email',
+            'password1',
+            'password2',
+        )
+
+    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Имя'}))
+    last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Фамилия'}))
+    username = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя'}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
+    password1 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}))
+    password2 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Подтвердите пароль'}))
+```
+
+И представление для регистрации:
+
+```python
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.contrib import auth, messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
+
+def registration(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.instance
+            auth.login(request, user)
+            messages.success(request, f'{user.username}, Вы успешно зарегестрировались и вошли в аккаунт')
+            return HttpResponseRedirect(reverse('main:index'))
+        else:
+            messages.error(request, 'Пожалуйста, исправьте ошибки в форме.')
+            print(form.errors)  # Добавьте это для отладки
+    else:
+        form = UserRegistrationForm()
+    context = {
+        'title': 'Домашняя - Регистрация',
+        'form': form
+    }
+    return render(request, 'users/registration.html', context)
